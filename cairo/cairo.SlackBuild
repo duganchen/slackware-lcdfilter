@@ -25,7 +25,7 @@ set -e
 PKGNAM=cairo
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
 
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 
 # The Gentoo USE flags. lcdfilter or cleartype.
 USE=${USE:-lcdfilter}
