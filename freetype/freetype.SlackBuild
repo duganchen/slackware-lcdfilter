@@ -24,7 +24,11 @@ set -e
 
 PKGNAM=freetype
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
-BUILD=${BUILD:-1lcdfilter}
+
+# The Gentoo USE flags. lcdfilter or cleartype.
+USE=${USE:-lcdfilter}
+
+BUILD=${BUILD:-1}
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
 
@@ -80,12 +84,17 @@ find . \
 # punishment on someone else's distribution.
 patch -p1 --verbose < $CWD/freetype.illadvisederror.diff
 
-patch -p1 --verbose < $FILESDIR/$P-subpixel-hinting.patch
-patch -p1 --verbose < $FILESDIR/$P-additionnal.patch
-patch -p1 --verbose < $FILESDIR/$P-protect-style-name.patch
-patch -p1 --verbose < $FILESDIR/$P-tricky-fonts.patch
+patch -p1 --verbose < $FILESDIR/enable_options.patch
+
+if [ $USE = "lcdfilter" ]; then
+	patch -p1 --verbose < $FILESDIR/$P-subpixel-hinting.patch
+	patch -p1 --verbose < $FILESDIR/$P-additionnal.patch
+	patch -p1 --verbose < $FILESDIR/$P-protect-style-name.patch
+	patch -p1 --verbose < $FILESDIR/$P-tricky-fonts.patch
+	patch -p1 --verbose < $FILESDIR/enable_lcdfilter_options.patch
+fi
+
 patch -p1 --verbose < $FILESDIR/$PN-2.3.2-enable-valid.patch
-patch -p0 --verbose < $CWD/enable_options.patch
 
 chown -R root:root .
 
@@ -122,13 +131,15 @@ cp -a \
 # too much
 rm -rf $PKG/usr/doc/freetype-$VERSION/docs/reference
 
-mkdir -p $PKG/etc/profile.d
-cp $FILESDIR/99lcdfilter $PKG/etc/profile.d
-chmod +x $PKG/etc/profile.d/99lcdfilter
+if [ $USE = "lcdfilter" ]; then
+	mkdir -p $PKG/etc/profile.d
+	cp $FILESDIR/99lcdfilter $PKG/etc/profile.d
+	chmod +x $PKG/etc/profile.d/99lcdfilter
+fi
 
 mkdir $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/freetype-$VERSION-$ARCH-$BUILD.txz
+/sbin/makepkg -l y -c n $TMP/freetype-$VERSION-$ARCH-$BUILD$USE.txz

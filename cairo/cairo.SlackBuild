@@ -25,7 +25,10 @@ set -e
 PKGNAM=cairo
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
 
-BUILD=${BUILD:-1lcdfilter}
+BUILD=${BUILD:-1}
+
+# The Gentoo USE flags. lcdfilter or cleartype.
+USE=${USE:-lcdfilter}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -77,9 +80,13 @@ find . \
   \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
   -exec chmod 644 {} \;
 
-patch -p1 --verbose < $FILESDIR/$P-ubuntu.patch
+if [ $USE = "lcdfilter" ]
+then
+	patch -p1 --verbose < $FILESDIR/$P-ubuntu.patch
+fi
 patch -p1 --verbose < $FILESDIR/$PN-1.8.8-interix.patch
 patch -p0 --verbose < $FILESDIR/$PN-1.10.0-buggy_gradients.patch
+
 autoreconf -i
 
 CFLAGS="$SLKCFLAGS" \
@@ -130,5 +137,4 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/cairo-$VERSION-$ARCH-$BUILD.txz
-
+/sbin/makepkg -l y -c n $TMP/cairo-$VERSION-$ARCH-$BUILD$USE.txz

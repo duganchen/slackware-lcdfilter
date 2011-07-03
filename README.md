@@ -3,6 +3,9 @@
 Ports of Gentoo's [LCD filtering](http://gitorious.org/lcd-filtering)
 ebuilds to Slackware.
 
+By default, they build for "lcdfilter" rendering. Build them with
+USE=cleartype if you want to "cleartype" rendering instead.
+
 The current revision is for Slackware 13.37. Here are direct links
 to the source tarballs. Use the slackware-lcdfilter SlackBuilds to
 build and install them in the following order:
@@ -19,6 +22,10 @@ If you're using a collection of fonts that you've copied from a Windows
 (Vista or newer) or OS X installation, then using these packages with
 [infinality.net](http://www.infinality.net/blog/)'s local.conf file will
 give you good default settings.
+
+If you've built your packages for "lcdfilter" rendering, then you need to
+source /etc/profile.d/99lcdfilter before restarting X. It will also be
+automatically sourced on every boot.
 
 The official support threads are here:
 
