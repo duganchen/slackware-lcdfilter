@@ -1,0 +1,785 @@
+diff -Naur fontconfig-2.8.0.orig/conf.d/20-hinting-small-fonts-slight.conf fontconfig-2.8.0/conf.d/20-hinting-small-fonts-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/20-hinting-small-fonts-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/20-hinting-small-fonts-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,15 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>8.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-aquabase-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-aquabase-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/21-hinting-small-aquabase-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/21-hinting-small-aquabase-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,18 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Aquabase</string>
++    </test>
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>13.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-arial-black-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-arial-black-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/21-hinting-small-arial-black-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/21-hinting-small-arial-black-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,15 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>8.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-browallia-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-browallia-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/21-hinting-small-browallia-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/21-hinting-small-browallia-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,19 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Browallia New</string>
++      <string>BrowalliaUPC</string>
++    </test>
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>13.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/22-hinting-courier-italic-slight.conf fontconfig-2.8.0/conf.d/22-hinting-courier-italic-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/22-hinting-courier-italic-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/22-hinting-courier-italic-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,18 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Courier</string>
++    </test>
++    <test name="slant" compare="not_eq" >
++      <const>roman</const>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-non-tt-instructed-slight.conf fontconfig-2.8.0/conf.d/25-hinting-non-tt-instructed-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/25-hinting-non-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/25-hinting-non-tt-instructed-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,170 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>AR PL ShanHeiSun Uni</string>
++      <string>American Typewriter</string>
++      <string>Apple Chancery</string>
++      <string>Apple Garamond Light</string>
++      <string>Apple Garamond</string>
++      <string>AppleGothic</string>
++      <string>Apple Symbols</string>
++      <string>Arabic Typesetting</string>
++      <string>Baekmuk Gulim</string>
++      <string>Baskerville</string>
++      <string>Big Caslon</string>
++      <string>Bitstream Charter</string>
++      <string>BrushScript</string>
++      <string>Cantarell</string>
++      <string>CantarellRegular</string>
++      <string>Cantarell Regular</string>
++      <string>Cardo</string>
++      <string>Century Schoolbook L</string>
++      <string>Century</string>
++      <string>Charis SIL</string>
++      <string>Chalkboard</string>
++      <string>CMU Bright</string>
++      <string>Cochin</string>
++      <string>Comfortaa</string>
++      <string>Comfortaa Regular</string>
++      <string>ComfortaaRegular</string>
++      <string>Courier Std</string>
++      <string>Courier10 BT</string>
++      <string>Crimson Text</string>
++      <string>David</string>
++      <string>Delicious</string>
++      <string>Didot</string>
++      <string>DilenniaUPC</string>
++      <string>District</string>
++      <string>DokChampa</string>
++      <string>Droid Sans Mono</string>
++      <string>Droid Sans</string>
++      <string>Droid Serif</string>
++      <string>Dutch801 Rm BT</string>
++      <string>EucrosiaUPC</string>
++      <string>FreeMono</string>
++      <string>FreeSans</string>
++      <string>FreeSerif</string>
++      <string>FreesiaUPC</string>
++      <string>Frutiger LT Std</string>
++      <string>Frutiger Linotype</string>
++      <string>Frutiger-Normal</string>
++      <string>Garamond</string>
++      <string>Gautami</string>
++      <string>Geneva CY</string>
++      <string>Geneva Regular</string>
++      <string>Geneva</string>
++      <string>Gentium</string>
++      <string>Gill Sans</string>
++      <string>Hard Gothic</string>
++      <string>Helvetica</string>
++      <string>Helvetica CY</string>
++      <string>Helvetica Neue</string>
++      <string>Herculanum</string>
++      <string>Hoefler Text</string>
++      <string>IM Fell</string>
++      <string>Inconsolata</string>
++      <string>IrisUPC</string>
++      <string>JasmineUPC</string>
++      <string>Jomolhari</string>
++      <string>Josefin Sans Std Light</string>
++      <string>Kai</string>
++      <string>Kalinga</string>
++      <string>KodchiangUPC</string>
++      <string>Laconic</string>
++      <string>Lacuna</string>
++      <string>Levenim MT</string>
++      <string>LilyUPC</string>
++      <string>LilyUPC</string>
++      <string>Linux Biolinum</string>
++      <string>Linux Libertine</string>
++      <string>Lobster</string>
++      <string>Lohit Bengali</string>
++      <string>Lohit Gujarati</string>
++      <string>Lohit Hindi</string>
++      <string>Lohit Hindi</string>
++      <string>Lohit Kannada</string>
++      <string>Lohit Malayalam</string>
++      <string>Lohit Oriya</string>
++      <string>Lohit Punjabi</string>
++      <string>Lohit Tamil</string>
++      <string>Lohit Telugu</string>
++      <string>Lucida Sans Std</string>
++      <string>Luxi Sans</string>
++      <string>Luxi Serif</string>
++      <string>M+ 2p</string>
++      <string>Marker Felt</string>
++      <string>Megalopolis</string>
++      <string>MetaMedium-Roman</string>
++      <string>Metabook-Roman</string>
++      <string>MgOpen Canonica</string>
++      <string>MgOpen Cosmetica</string>
++      <string>MgOpen Modata</string>
++      <string>MgOpen Moderna</string>
++      <string>Myriad Pro</string>
++      <string>Miriam</string>
++      <string>MS Mincho</string>
++      <string>MyriadRegular</string>
++      <string>Neuton</string>
++      <string>Nimbus Roman No9 L</string>
++      <string>Nimbus Mono L</string>
++      <string>Nimbus Sans</string>
++      <string>Nimbus Sans L</string>
++      <string>Nobile</string>
++      <string>Nobile002</string>
++      <string>Nobile-bold</string>
++      <string>Nobile-italic002</string>
++      <string>Nobile-bold-italic002</string>
++      <string>OFL Sorts Mill Goudy TT</string>
++      <string>Ocean Sans Std</string>
++      <string>Old Standard TT</string>
++      <string>Optima</string>
++      <string>OTS derived font</string>
++      <string>OTS derivied font</string>  <!-- bug in chrome code? -->
++      <string>Palladio</string>
++      <string>Papyrus</string>
++      <string>PrimaSans BT</string>
++      <string>proxima-nova-1</string>
++      <string>proxima-nova-2</string>
++      <string>proxima nova</string>
++      <string>proxima nova bold</string>
++      <string>proxima nova regular</string>
++      <string>Reenie Beanie</string>
++      <string>SimHei</string>
++      <string>Skia</string>
++      <string>Swansea</string>
++      <string>Swiss721</string>
++      <string>Sylfaen</string>
++      <string>Tangerine</string>
++      <string>Times LT Std</string>
++      <string>Times New Roman MT Std</string>
++      <string>Times Roman</string>
++      <string>Times Ten LT Std</string>
++      <string>Univers LT Std</string>
++      <string>URWClassico</string>
++      <string>Utopia</string>
++      <string>Verdimka</string>
++      <string>Vollkorn</string>
++      <string>Yanone Kaffeesatz</string>
++      <string>Zapfino</string>
++      <string>cmbx10</string>
++      <string>cmex10</string>
++      <string>cmmi10</string>
++      <string>cmr10</string>
++      <string>cmsy10</string>
++      <string>cmtt10</string>
++      <string>eufm10</string>
++      <string>msam10</string>
++      <string>msbm10</string>
++      <string>wasy10</string>
++      <string>Eurostile LT Std</string>
++    </test>
++    <edit mode="assign" name="autohint"  >
++      <bool>true</bool>
++    </edit>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-full.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-full.conf
+--- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-full.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-full.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,111 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Arimo</string>
++      <string>Cousine</string>
++      <string>Tinos</string>
++      <string>Ubuntu</string>
++      <string>Andale Mono</string>
++      <string>Andalus</string>
++      <string>Angsana New</string>
++      <string>AngsanaUPC</string>
++      <string>Aquabase</string>
++      <string>Arial Black</string>
++      <string>Arial MT</string>
++      <string>Arial Narrow</string>
++      <string>Arial SF MT</string>
++      <string>Arial Unicode MS</string>
++      <string>Arial</string>
++      <string>ArialMT</string>
++      <string>Bitstream Vera Sans Mono</string>
++      <string>Bitstream Vera Sans</string>
++      <string>Bitstream Vera Serif</string>
++      <string>Book Antiqua</string>
++      <string>Bookman Old Style</string>
++      <string>Browallia New</string>
++      <string>BrowalliaUPC</string>
++      <string>Calibri</string>
++      <string>Cambria</string>
++      <string>Candara</string>
++      <string>Century Gothic</string>
++      <string>Chalkduster</string>
++      <string>Charcoal CY</string>
++      <string>Charcoal</string>
++      <string>Charis SIL</string>
++      <string>Chicago</string>
++      <string>Comic Sans MS</string>
++      <string>Consolas</string>
++      <string>Constantia</string>
++      <string>Copperplate</string>
++      <string>Corbel</string>
++      <string>Cordia New</string>
++      <string>CordiaUPC</string>
++      <string>Courier 10 Pitch</string>
++      <string>Courier New</string>
++      <string>Courier</string>
++      <string>Dark Courier</string>
++      <string>DejaVu LGC Sans Mono</string>
++      <string>DejaVu Sans Mono</string>
++      <string>DejaVu Sans</string>
++      <string>DejaVu Serif</string>
++      <string>Estrangelo Edessa</string>
++      <string>Euphemia</string>
++      <string>FrankRuehl</string>
++      <string>Franklin Gothic Medium</string>
++      <string>Futura</string>
++      <string>Georgia</string>
++      <string>Gotham Book</string>
++      <string>Gotham Light</string>
++      <string>Gotham Medium</string>
++      <string>Guatami</string>
++      <string>Impact</string>
++      <string>Latha</string>
++      <string>Levinim MT</string>
++      <string>Liberation Mono</string>
++      <string>Liberation Sans</string>
++      <string>Liberation Serif</string>
++      <string>Lucida Console</string>
++      <string>Lucida Grande</string>
++      <string>Lucida Sans Unicode</string>
++      <string>Luxi Mono</string>
++      <string>Malgun Gothic</string>
++      <string>Microsoft Himalaya</string>
++      <string>Microsoft JhengHei</string>
++      <string>Microsoft Sans Serif</string>
++      <string>Microsoft Uighur</string>
++      <string>Microsoft YaHei</string>
++      <string>Microsoft Yi Baiti</string>
++      <string>Miriam Fixed</string>
++      <string>Molengo</string>
++      <string>Monaco</string>
++      <string>Mongolian Baiti</string>
++      <string>MoolBoran</string>
++      <string>Narkisim</string>
++      <string>Nina</string>
++      <string>Nyala</string>
++      <string>Padauk</string>
++      <string>Palatino Linotype</string>
++      <string>Plantagenet Cherokee</string>
++      <string>Raavi</string>
++      <string>Segoe UI</string>
++      <string>Segoe UI Semibold</string>
++      <string>TITUS Cyberbit Basic</string>
++      <string>Tahoma</string>
++      <string>Times New Roman</string>
++      <string>Traditional Arabic</string>
++      <string>Trebuchet MS</string>
++      <string>Tunga</string>
++      <string>Verdana</string>
++      <string>Vrinda</string>
++      <string>Yanone Kaffeesatz</string>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintfull</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>false</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-none.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-none.conf
+--- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-none.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-none.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,111 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Arimo</string>
++      <string>Cousine</string>
++      <string>Tinos</string>
++      <string>Ubuntu</string>
++      <string>Andale Mono</string>
++      <string>Andalus</string>
++      <string>Angsana New</string>
++      <string>AngsanaUPC</string>
++      <string>Aquabase</string>
++      <string>Arial Black</string>
++      <string>Arial MT</string>
++      <string>Arial Narrow</string>
++      <string>Arial SF MT</string>
++      <string>Arial Unicode MS</string>
++      <string>Arial</string>
++      <string>ArialMT</string>
++      <string>Bitstream Vera Sans Mono</string>
++      <string>Bitstream Vera Sans</string>
++      <string>Bitstream Vera Serif</string>
++      <string>Book Antiqua</string>
++      <string>Bookman Old Style</string>
++      <string>Browallia New</string>
++      <string>BrowalliaUPC</string>
++      <string>Calibri</string>
++      <string>Cambria</string>
++      <string>Candara</string>
++      <string>Century Gothic</string>
++      <string>Chalkduster</string>
++      <string>Charcoal CY</string>
++      <string>Charcoal</string>
++      <string>Charis SIL</string>
++      <string>Chicago</string>
++      <string>Comic Sans MS</string>
++      <string>Consolas</string>
++      <string>Constantia</string>
++      <string>Copperplate</string>
++      <string>Corbel</string>
++      <string>Cordia New</string>
++      <string>CordiaUPC</string>
++      <string>Courier 10 Pitch</string>
++      <string>Courier New</string>
++      <string>Courier</string>
++      <string>Dark Courier</string>
++      <string>DejaVu LGC Sans Mono</string>
++      <string>DejaVu Sans Mono</string>
++      <string>DejaVu Sans</string>
++      <string>DejaVu Serif</string>
++      <string>Estrangelo Edessa</string>
++      <string>Euphemia</string>
++      <string>FrankRuehl</string>
++      <string>Franklin Gothic Medium</string>
++      <string>Futura</string>
++      <string>Georgia</string>
++      <string>Gotham Book</string>
++      <string>Gotham Light</string>
++      <string>Gotham Medium</string>
++      <string>Guatami</string>
++      <string>Impact</string>
++      <string>Latha</string>
++      <string>Levinim MT</string>
++      <string>Liberation Mono</string>
++      <string>Liberation Sans</string>
++      <string>Liberation Serif</string>
++      <string>Lucida Console</string>
++      <string>Lucida Grande</string>
++      <string>Lucida Sans Unicode</string>
++      <string>Luxi Mono</string>
++      <string>Malgun Gothic</string>
++      <string>Microsoft Himalaya</string>
++      <string>Microsoft JhengHei</string>
++      <string>Microsoft Sans Serif</string>
++      <string>Microsoft Uighur</string>
++      <string>Microsoft YaHei</string>
++      <string>Microsoft Yi Baiti</string>
++      <string>Miriam Fixed</string>
++      <string>Molengo</string>
++      <string>Monaco</string>
++      <string>Mongolian Baiti</string>
++      <string>MoolBoran</string>
++      <string>Narkisim</string>
++      <string>Nina</string>
++      <string>Nyala</string>
++      <string>Padauk</string>
++      <string>Palatino Linotype</string>
++      <string>Plantagenet Cherokee</string>
++      <string>Raavi</string>
++      <string>Segoe UI</string>
++      <string>Segoe UI Semibold</string>
++      <string>TITUS Cyberbit Basic</string>
++      <string>Tahoma</string>
++      <string>Times New Roman</string>
++      <string>Traditional Arabic</string>
++      <string>Trebuchet MS</string>
++      <string>Tunga</string>
++      <string>Verdana</string>
++      <string>Vrinda</string>
++      <string>Yanone Kaffeesatz</string>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintnone</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-slight.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-slight.conf
+--- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-slight.conf	2011-12-04 11:43:08.115961479 +0100
+@@ -0,0 +1,111 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Arimo</string>
++      <string>Cousine</string>
++      <string>Tinos</string>
++      <string>Ubuntu</string>
++      <string>Andale Mono</string>
++      <string>Andalus</string>
++      <string>Angsana New</string>
++      <string>AngsanaUPC</string>
++      <string>Aquabase</string>
++      <string>Arial Black</string>
++      <string>Arial MT</string>
++      <string>Arial Narrow</string>
++      <string>Arial SF MT</string>
++      <string>Arial Unicode MS</string>
++      <string>Arial</string>
++      <string>ArialMT</string>
++      <string>Bitstream Vera Sans Mono</string>
++      <string>Bitstream Vera Sans</string>
++      <string>Bitstream Vera Serif</string>
++      <string>Book Antiqua</string>
++      <string>Bookman Old Style</string>
++      <string>Browallia New</string>
++      <string>BrowalliaUPC</string>
++      <string>Calibri</string>
++      <string>Cambria</string>
++      <string>Candara</string>
++      <string>Century Gothic</string>
++      <string>Chalkduster</string>
++      <string>Charcoal CY</string>
++      <string>Charcoal</string>
++      <string>Charis SIL</string>
++      <string>Chicago</string>
++      <string>Comic Sans MS</string>
++      <string>Consolas</string>
++      <string>Constantia</string>
++      <string>Copperplate</string>
++      <string>Corbel</string>
++      <string>Cordia New</string>
++      <string>CordiaUPC</string>
++      <string>Courier 10 Pitch</string>
++      <string>Courier New</string>
++      <string>Courier</string>
++      <string>Dark Courier</string>
++      <string>DejaVu LGC Sans Mono</string>
++      <string>DejaVu Sans Mono</string>
++      <string>DejaVu Sans</string>
++      <string>DejaVu Serif</string>
++      <string>Estrangelo Edessa</string>
++      <string>Euphemia</string>
++      <string>FrankRuehl</string>
++      <string>Franklin Gothic Medium</string>
++      <string>Futura</string>
++      <string>Georgia</string>
++      <string>Gotham Book</string>
++      <string>Gotham Light</string>
++      <string>Gotham Medium</string>
++      <string>Guatami</string>
++      <string>Impact</string>
++      <string>Latha</string>
++      <string>Levinim MT</string>
++      <string>Liberation Mono</string>
++      <string>Liberation Sans</string>
++      <string>Liberation Serif</string>
++      <string>Lucida Console</string>
++      <string>Lucida Grande</string>
++      <string>Lucida Sans Unicode</string>
++      <string>Luxi Mono</string>
++      <string>Malgun Gothic</string>
++      <string>Microsoft Himalaya</string>
++      <string>Microsoft JhengHei</string>
++      <string>Microsoft Sans Serif</string>
++      <string>Microsoft Uighur</string>
++      <string>Microsoft YaHei</string>
++      <string>Microsoft Yi Baiti</string>
++      <string>Miriam Fixed</string>
++      <string>Molengo</string>
++      <string>Monaco</string>
++      <string>Mongolian Baiti</string>
++      <string>MoolBoran</string>
++      <string>Narkisim</string>
++      <string>Nina</string>
++      <string>Nyala</string>
++      <string>Padauk</string>
++      <string>Palatino Linotype</string>
++      <string>Plantagenet Cherokee</string>
++      <string>Raavi</string>
++      <string>Segoe UI</string>
++      <string>Segoe UI Semibold</string>
++      <string>TITUS Cyberbit Basic</string>
++      <string>Tahoma</string>
++      <string>Times New Roman</string>
++      <string>Traditional Arabic</string>
++      <string>Trebuchet MS</string>
++      <string>Tunga</string>
++      <string>Verdana</string>
++      <string>Vrinda</string>
++      <string>Yanone Kaffeesatz</string>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/70-force-bitmaps.conf fontconfig-2.8.0/conf.d/70-force-bitmaps.conf
+--- fontconfig-2.8.0.orig/conf.d/70-force-bitmaps.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/70-force-bitmaps.conf	2011-12-04 11:42:48.230144741 +0100
+@@ -0,0 +1,20 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!-- Accept bitmap fonts -->
++ <selectfont>
++  <acceptfont>
++   <pattern>
++     <patelt name="scalable"><bool>false</bool></patelt>
++   </pattern>
++  </acceptfont>
++ </selectfont>
++<!-- Do not use embedded bitmaps in fonts -->
++ <match target="font" >
++  <edit name="embeddedbitmap" mode="assign"><bool>true</bool></edit>
++ </match>
++<!-- Do not substitute truetype fonts for bitmap ones -->
++ <match target="pattern" >
++  <edit name="prefer_outline"><bool>false</bool></edit>
++ </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/70-no-bitmaps.conf fontconfig-2.8.0/conf.d/70-no-bitmaps.conf
+--- fontconfig-2.8.0.orig/conf.d/70-no-bitmaps.conf	2011-12-04 11:42:39.512226057 +0100
++++ fontconfig-2.8.0/conf.d/70-no-bitmaps.conf	2011-12-04 11:42:48.230144741 +0100
+@@ -9,4 +9,12 @@
+    </pattern>
+   </rejectfont>
+  </selectfont>
++<!-- Do not use embedded bitmaps in fonts -->
++ <match target="font" >
++  <edit name="embeddedbitmap" mode="assign"><bool>false</bool></edit>
++ </match>
++<!-- Substitute truetype fonts for bitmap ones -->
++ <match target="pattern" >
++  <edit name="prefer_outline"><bool>true</bool></edit>
++ </match>
+ </fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/90-embolden.conf fontconfig-2.8.0/conf.d/90-embolden.conf
+--- fontconfig-2.8.0.orig/conf.d/90-embolden.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.8.0/conf.d/90-embolden.conf	2011-12-04 11:42:48.238144666 +0100
+@@ -0,0 +1,22 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!-- Prevent bold-ish fonts from being emboldened -->
++ <match target="font">
++  <!-- check to see if the font is just regular -->
++  <test name="weight" compare="more_eq"><const>semibold</const></test>
++  <!-- check to see if the pattern requests bold -->
++  <test target="pattern" name="weight" compare="eq"><const>bold</const></test>
++  <!-- pretend it's bold now -->
++  <edit name="weight" mode="assign"><const>bold</const></edit>
++ </match>
++<!-- Prevent thin-ish fonts from being emboldened -->
++ <match target="font">
++  <!-- check to see if the font is just regular -->
++  <test name="weight" compare="less"><const>book</const></test>
++  <!-- check to see if the pattern requests bold -->
++  <test target="pattern" name="weight" compare="eq"><const>bold</const></test>
++  <!-- pretend it's bold now -->
++  <edit name="weight" mode="assign"><const>bold</const></edit>
++ </match>
++</fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/90-synthetic.conf fontconfig-2.8.0/conf.d/90-synthetic.conf
+--- fontconfig-2.8.0.orig/conf.d/90-synthetic.conf	2011-12-04 11:42:39.513226048 +0100
++++ fontconfig-2.8.0/conf.d/90-synthetic.conf	2011-12-04 11:42:48.238144666 +0100
+@@ -61,4 +61,55 @@
+ 			<const>bold</const>
+ 		</edit>
+ 	</match>
++
++<!--
++ Force flagged fonts to have artificial oblique
++-->
++
++        <match target="font" >
++                <!-- check to see if the font is roman -->
++                <test name="slant" >
++                        <const>roman</const>
++                </test>
++                <!-- look for fonts which were marked for fake obliquing -->
++                <test name="fake_slant">
++                        <bool>true</bool>
++                </test>
++                <!-- multiply the matrix to slant the font -->
++                <edit mode="assign" name="matrix" >
++                        <times>
++                                <name>matrix</name>
++                                <matrix>
++                                        <double>1.0</double>
++                                        <double>0.2</double>
++                                        <double>0</double>
++                                        <double>1</double>
++                                </matrix>
++                        </times>
++                </edit>
++                <!-- pretend the font is oblique now -->
++                <edit mode="assign" name="slant" >
++                        <const>oblique</const>
++                </edit>
++        </match>
++
++<!--
++ Force flagged fonts to have artificial bold
++ -->
++
++        <match target="font" >
++                <!-- look for fonts which were marked for fake bolding -->
++                <test name="fake_bold">
++                        <bool>true</bool>
++                </test>
++                <!-- Set the embolden flag -->
++                <edit name="embolden" mode="assign">
++                                <bool>true</bool>
++                </edit>
++                <!-- pretend the font is bold now -->
++                <edit mode="assign" name="weight" >
++                        <const>bold</const>
++                </edit>
++        </match>
++
+ </fontconfig>
+diff -Naur fontconfig-2.8.0.orig/conf.d/Makefile.am fontconfig-2.8.0/conf.d/Makefile.am
+--- fontconfig-2.8.0.orig/conf.d/Makefile.am	2011-12-04 11:42:39.512226057 +0100
++++ fontconfig-2.8.0/conf.d/Makefile.am	2011-12-04 11:45:16.064388855 +0100
+@@ -39,7 +39,16 @@
+ 	10-unhinted.conf \
+ 	11-lcd-filter-lcddefault.conf \
+ 	20-fix-globaladvance.conf \
++	20-hinting-small-fonts-slight.conf \
+ 	20-unhint-small-vera.conf \
++	21-hinting-small-aquabase-slight.conf \
++	21-hinting-small-arial-black-slight.conf \
++	21-hinting-small-browallia-slight.conf \
++	22-hinting-courier-italic-slight.conf \
++	25-hinting-non-tt-instructed-slight.conf \
++	25-hinting-tt-instructed-full.conf \
++	25-hinting-tt-instructed-none.conf \
++	25-hinting-tt-instructed-slight.conf \
+ 	25-unhint-nonlatin.conf \
+ 	30-urw-aliases.conf \
+ 	30-metric-aliases.conf \
+@@ -57,6 +66,7 @@
+ 	70-no-bitmaps.conf \
+ 	70-yes-bitmaps.conf \
+ 	80-delicious.conf \
++	90-embolden.conf \
+ 	90-synthetic.conf
+ 
+ CONF_LINKS = \
+@@ -80,6 +90,7 @@
+ 	69-unifont.conf \
+ 	70-no-bitmaps.conf \
+ 	80-delicious.conf \
++	90-embolden.conf \
+ 	90-synthetic.conf
+ 
+ EXTRA_DIST = $(CONF_FILES) $(DOC_FILES)

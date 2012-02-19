@@ -101,7 +101,13 @@ chown -R root:root .
 
 libtoolize
 
-CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
+sh autogen.sh
+CFLAGS=$SLKCFLAGS \
+ ./configure --prefix=/usr \
+ --libdir=/usr/lib$LIBDIRXUFFIX \
+ --build=$ARCH-slackware-linux
+
+#CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
 

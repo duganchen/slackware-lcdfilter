@@ -27,7 +27,7 @@ VERSION=${VERSION:-$(echo fontconfig-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1
 # The Gentoo USE flags. lcdfilter or cleartype.
 USE=${USE:-lcdfilter}
 
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -90,6 +90,7 @@ patch -p1 --verbose < $FILESDIR/$PN-2.8.0-urw-aliases.patch
 
 if [ $USE = "lcdfilter" ]; then
 	patch -p1 --verbose < $FILESDIR/$P-ubuntu.patch
+	patch -p1 --verbose < $FILESDIR/$P-infinality.patch
 fi
 
 autoreconf -i
