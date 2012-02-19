@@ -100,7 +100,13 @@ patch -p1 --verbose < $CWD/lcd_options.patch
 patch -p1 --verbose < $FILESDIR/$PKGNAM-2.3.2-enable-valid.patch
 
 chown -R root:root .
-CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
+
+libtoolize
+CFLAGS="$SLKCFLAGS" 
+ ./configure --prefix=/usr \
+--libdir=/usr/lib${LIBDIRSUFFIX} \
+--build=$ARCH-slackware-linux
+
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
 
