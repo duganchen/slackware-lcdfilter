@@ -25,7 +25,7 @@ set -e
 PKGNAM=cairo
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
 
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 
 # The Gentoo USE flags. lcdfilter or cleartype.
 USE=${USE:-lcdfilter}
@@ -86,6 +86,9 @@ then
 fi
 patch -p1 --verbose < $FILESDIR/$PN-1.8.8-interix.patch
 patch -p0 --verbose < $FILESDIR/$PN-1.10.0-buggy_gradients.patch
+patch -p1 --verbose < $FILESDIR/$P-interix.patch
+patch -p1 --verbose < $FILESDIR/$P-qt-surface.patch
+patch -p1 --verbose < $FILESDIR/$PN-respect-fontconfig.patch
 
 autoreconf -i
 
