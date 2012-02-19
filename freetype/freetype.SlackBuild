@@ -24,11 +24,10 @@ set -e
 
 PKGNAM=freetype
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
+BUILD=${BUILD:-1}
 
 # The Gentoo USE flags. lcdfilter or cleartype.
 USE=${USE:-lcdfilter}
-
-BUILD=${BUILD:-1}
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
 
@@ -63,14 +62,12 @@ PKG=$TMP/package-freetype
 # ebuild variables
 # to make the patch lines easier to port 
 FILESDIR=$CWD/files
-P=freetype-$VERSION
-PN=freetype
 
 rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $TMP
 rm -rf freetype-$VERSION
-tar xvf $CWD/freetype-$VERSION.tar.?z*
+tar xvf $CWD/freetype-$VERSION.tar.?z* || exit 1
 cd freetype-$VERSION
 
 chown -R root:root .
@@ -82,32 +79,28 @@ find . \
 
 # This breaks far too many things.  Freetype2 developers will have to get their
 # punishment on someone else's distribution.
-patch -p1 --verbose < $CWD/freetype.illadvisederror.diff
+zcat $CWD/freetype.illadvisederror.diff.gz | patch -p1 --verbose || exit 1
+
+# The line below enables code patented by Microsoft, so don't uncomment it
+# unless you have a license to use the code and take all legal responsibility
+# for doing so.
+# Please see this web site for more details:
+#   http://www.freetype.org/patents.html
+#zcat $CWD/freetype.subpixel.rendering.diff.gz | patch -p1 --verbose || exit 1
 
 # enable_options ebuild lines.
-patch -p1 < $CWD/options.patch
+patch -p1 --verbose < $CWD/options.patch
 
-if [ $USE = "lcdfilter" ]; then
-	patch -p1 --verbose < $FILESDIR/$P-subpixel-hinting.patch
-	patch -p1 --verbose < $FILESDIR/$P-additional.patch
+patch -p1 --verbose < $FILESDIR/$PKGNAM-$VERSION-subpixel-hinting.patch
+patch -p1 --verbose < $FILESDIR/$PKGNAM-$VERSION-additional.patch
 
-	# enable_options ebuild lines.
-	patch -p1 < $CWD/lcd_options.patch
-fi
+# enable_options ebuild lines.
+patch -p1 --verbose < $CWD/lcd_options.patch
 
-patch -p1 --verbose < $FILESDIR/$PN-2.3.2-enable-valid.patch
+patch -p1 --verbose < $FILESDIR/$PKGNAM-2.3.2-enable-valid.patch
 
 chown -R root:root .
-
-libtoolize
-
-sh autogen.sh
-CFLAGS=$SLKCFLAGS \
- ./configure --prefix=/usr \
- --libdir=/usr/lib$LIBDIRXUFFIX \
- --build=$ARCH-slackware-linux
-
-#CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
+CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
 
@@ -135,14 +128,11 @@ cp -a \
 # too much
 rm -rf $PKG/usr/doc/freetype-$VERSION/docs/reference
 
-if [ $USE = "lcdfilter" ]; then
-	install -Dm755 $FILESDIR/$P-99lcdfilter $PKG/etc/profile.d/99lcdfilter
-	install -Dm755 $FILESDIR/ft-settings.sh /usr/bin/ft-settings.sh
-fi
+install -Dm755 $FILESDIR/$PKGNAM-$VERSION-99lcdfilter $PKG/etc/profile.d/infinality-settings.sh
+install -Dm755 $FILESDIR/ft-settings.sh /usr/bin/ft-settings.sh
 
 mkdir $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $TMP/freetype-$VERSION-$ARCH-$BUILD$USE.txz

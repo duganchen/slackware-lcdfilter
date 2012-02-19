@@ -1,2 +1,2 @@
 ldconfig
-. /etc/profile.d/99lcdfilter
+. /etc/profile.d/infinality-settings.sh
