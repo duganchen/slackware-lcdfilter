@@ -10,22 +10,17 @@ The current revision is for Slackware 13.37. Here are direct links
 to the source tarballs. Use the slackware-lcdfilter SlackBuilds to
 build and install them in the following order:
 
-1. [FreeType 2.4.4](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.4.tar.bz2)
+1. [FreeType 2.4.8](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.8.tar.bz2)
 2. [Fontconfig 2.8.0](http://fontconfig.org/release/fontconfig-2.8.0.tar.gz)
 3. [libXft 2.2.0](http://xorg.freedesktop.org/releases/individual/lib/libXft-2.2.0.tar.bz2)
 4. [Cairo 1.10.2](http://cairographics.org/releases/cairo-1.10.2.tar.gz)
 
-These are the same versions included in Slackware 13.37's /source
-directory.
-
-If you're using a collection of fonts that you've copied from a Windows
-(Vista or newer) or OS X installation, then using these packages with
-[infinality.net](http://www.infinality.net/blog/)'s local.conf file will
-give you good default settings.
+These are the same versions included in an up-to-date Slackware 13.37 installation.
 
 If you've built your packages for "lcdfilter" rendering, then you need to
 source /etc/profile.d/99lcdfilter before restarting X. It will also be
-automatically sourced on every boot.
+automatically sourced on every boot. You can also use ft-settings.sh to
+fine-tune your configuration.
 
 The official support threads are here:
 

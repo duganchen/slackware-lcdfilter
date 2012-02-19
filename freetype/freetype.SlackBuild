@@ -28,7 +28,7 @@ VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d
 # The Gentoo USE flags. lcdfilter or cleartype.
 USE=${USE:-lcdfilter}
 
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
 
@@ -84,27 +84,25 @@ find . \
 # punishment on someone else's distribution.
 patch -p1 --verbose < $CWD/freetype.illadvisederror.diff
 
-patch -p1 --verbose < $FILESDIR/enable_options.patch
+# enable_options ebuild lines.
+patch -p1 < $CWD/options.patch
 
 if [ $USE = "lcdfilter" ]; then
 	patch -p1 --verbose < $FILESDIR/$P-subpixel-hinting.patch
-	patch -p1 --verbose < $FILESDIR/$P-additionnal.patch
-	patch -p1 --verbose < $FILESDIR/$P-protect-style-name.patch
-	patch -p1 --verbose < $FILESDIR/$P-tricky-fonts.patch
-	patch -p1 --verbose < $FILESDIR/enable_lcdfilter_options.patch
+	patch -p1 --verbose < $FILESDIR/$P-additional.patch
+
+	# enable_options ebuild lines.
+	patch -p1 < $CWD/lcd_options.patch
 fi
 
 patch -p1 --verbose < $FILESDIR/$PN-2.3.2-enable-valid.patch
 
 chown -R root:root .
 
-sh autogen.sh
+libtoolize
 
-CFLAGS="$SLKCFLAGS" \
- ./configure --prefix=/usr \
- --libdir=/usr/lib${LIBDIRSUFFIX} \
- --build=$ARCH-slackware-linux
-make $NUMJOBS || make
+CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
+make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
 
 # This shouldn't be needed (apps should pick up -I/usr/include/freetype2 from
@@ -132,9 +130,8 @@ cp -a \
 rm -rf $PKG/usr/doc/freetype-$VERSION/docs/reference
 
 if [ $USE = "lcdfilter" ]; then
-	mkdir -p $PKG/etc/profile.d
-	cp $FILESDIR/99lcdfilter $PKG/etc/profile.d
-	chmod +x $PKG/etc/profile.d/99lcdfilter
+	install -Dm755 $FILESDIR/$P-99lcdfilter $PKG/etc/profile.d/99lcdfilter
+	install -Dm755 $FILESDIR/ft-settings.sh /usr/bin/ft-settings.sh
 fi
 
 mkdir $PKG/install
