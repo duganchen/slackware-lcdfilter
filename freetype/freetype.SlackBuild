@@ -110,10 +110,10 @@ enable_option TT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
 patch -p1 --verbose < $FILESDIR/$PKGNAM-2.3.2-enable-valid.patch
 
+libtoolize
+
 chown -R root:root .
 
-autoreconf -i
-libtoolize
 
 CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
 make $NUMJOBS || make || exit 1
