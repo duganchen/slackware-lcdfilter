@@ -20,16 +20,26 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 set -e
 
 PKGNAM=freetype
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
-BUILD=${BUILD:-1}
-
-# The Gentoo USE flags. lcdfilter or cleartype.
-USE=${USE:-lcdfilter}
+BUILD=${BUILD:-1_lcdfilter}
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
+
+enable_option() {
+	sed -i -e "/#define $1/a #define $1" \
+		include/freetype/config/ftoption.h \
+		|| die "unable to enable option $1"
+}
+disable_option() {
+	sed -i -e "/#define $1/ { s:^:/*:; s:$:*/: }" \
+		include/freetype/config/ftoption.h \
+		|| die "unable to disable option $1"
+}
+
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -60,7 +70,7 @@ TMP=${TMP:-/tmp}
 PKG=$TMP/package-freetype
 
 # ebuild variables
-# to make the patch lines easier to port 
+# to make the patch lines easier to port
 FILESDIR=$CWD/files
 
 rm -rf $PKG
@@ -79,7 +89,7 @@ find . \
 
 # This breaks far too many things.  Freetype2 developers will have to get their
 # punishment on someone else's distribution.
-zcat $CWD/freetype.illadvisederror.diff.gz | patch -p1 --verbose || exit 1
+cat $CWD/freetype.illadvisederror.diff | patch -p1 --verbose
 
 # The line below enables code patented by Microsoft, so don't uncomment it
 # unless you have a license to use the code and take all legal responsibility
@@ -88,25 +98,24 @@ zcat $CWD/freetype.illadvisederror.diff.gz | patch -p1 --verbose || exit 1
 #   http://www.freetype.org/patents.html
 #zcat $CWD/freetype.subpixel.rendering.diff.gz | patch -p1 --verbose || exit 1
 
-# enable_options ebuild lines.
-patch -p1 --verbose < $CWD/options.patch
+enable_option FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+disable_option FT_CONFIG_OPTION_OLD_INTERNALS
 
 patch -p1 --verbose < $FILESDIR/$PKGNAM-$VERSION-subpixel-hinting.patch
-patch -p1 --verbose < $FILESDIR/$PKGNAM-$VERSION-additional.patch
+patch -p1 --verbose < $FILESDIR/$PKGNAM-$VERSION-subpixel-rendering.patch
 
-# enable_options ebuild lines.
-patch -p1 --verbose < $CWD/lcd_options.patch
+
+enable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
+enable_option TT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
 patch -p1 --verbose < $FILESDIR/$PKGNAM-2.3.2-enable-valid.patch
 
 chown -R root:root .
 
+autoreconf -i
 libtoolize
-CFLAGS="$SLKCFLAGS" 
- ./configure --prefix=/usr \
---libdir=/usr/lib${LIBDIRSUFFIX} \
---build=$ARCH-slackware-linux
 
+CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
 
@@ -135,10 +144,11 @@ cp -a \
 rm -rf $PKG/usr/doc/freetype-$VERSION/docs/reference
 
 install -Dm755 $FILESDIR/$PKGNAM-$VERSION-99lcdfilter $PKG/etc/profile.d/infinality-settings.sh
-install -Dm755 $FILESDIR/ft-settings.sh $PKG/usr/bin/ft-settings.sh
+install -Dm755 $FILESDIR/ft-settings.sh $PKG/usr/bin/ft-settings
 
 mkdir $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/freetype-$VERSION-$ARCH-$BUILD$USE.txz
+/sbin/makepkg -l y -c n $TMP/freetype-$VERSION-$ARCH-$BUILD.txz
+

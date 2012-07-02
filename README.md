@@ -11,7 +11,7 @@ source tarballs. Use the slackware-lcdfilter SlackBuilds to build and install
 them in the following order:
 
 1. [FreeType
-   2.4.8](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.8.tar.bz2)
+   2.4.10](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.10.tar.bz2)
 2. [Fontconfig 2.8.0](http://fontconfig.org/release/fontconfig-2.8.0.tar.gz)
 3. [libXft
    2.2.0](http://xorg.freedesktop.org/releases/individual/lib/libXft-2.2.0.tar.bz2)
