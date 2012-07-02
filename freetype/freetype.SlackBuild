@@ -144,7 +144,7 @@ cp -a \
 rm -rf $PKG/usr/doc/freetype-$VERSION/docs/reference
 
 install -Dm755 $FILESDIR/$PKGNAM-$VERSION-99lcdfilter $PKG/etc/profile.d/infinality-settings.sh
-install -Dm755 $FILESDIR/ft-settings.sh $PKG/usr/bin/ft-settings
+install -Dm755 $FILESDIR/$PKGNAM-$VERSION-ft-settings.sh $PKG/usr/bin/ft-settings
 
 mkdir $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
