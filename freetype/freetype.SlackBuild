@@ -25,7 +25,7 @@ set -e
 
 PKGNAM=freetype
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | cut -d - -f 2 | rev | cut -f 3- -d . | rev)}
-BUILD=${BUILD:-1_lcdfilter}
+BUILD=${BUILD:-2lcdfilter}
 
 NUMJOBS=${NUMJOBS:-" -j7 "}
 
@@ -110,13 +110,17 @@ enable_option TT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
 patch -p1 --verbose < $FILESDIR/$PKGNAM-2.3.2-enable-valid.patch
 
+sh autogen.sh
 libtoolize
 
 chown -R root:root .
 
-
-CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux"
-make $NUMJOBS || make || exit 1
+#CFLAGS="$SLKCFLAGS" make setup CFG="--prefix=/usr --libdir=/usr/lib${LIBDIRSUFFIX} --build=$ARCH-slackware-linux --enable-static"
+#make $NUMJOBS || make || exit 1
+./configure --prefix=/usr\
+	--libdir=/usr/lib${LIBDIRSUFFIX}\
+	--build=$ARCH-slackware-linux
+make
 make install DESTDIR=$PKG
 
 # This shouldn't be needed (apps should pick up -I/usr/include/freetype2 from
