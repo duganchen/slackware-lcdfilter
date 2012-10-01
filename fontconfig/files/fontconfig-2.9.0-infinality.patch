@@ -1,111 +1,6 @@
-diff -Naur fontconfig-2.8.0.orig/conf.d/20-hinting-small-fonts-slight.conf fontconfig-2.8.0/conf.d/20-hinting-small-fonts-slight.conf
---- fontconfig-2.8.0.orig/conf.d/20-hinting-small-fonts-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/20-hinting-small-fonts-slight.conf	2011-12-04 11:43:08.115961479 +0100
-@@ -0,0 +1,15 @@
-+<?xml version='1.0'?>
-+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-+<fontconfig>
-+  <match target="font" >
-+    <test compare="less" name="pixelsize" qual="any" >
-+      <double>8.5</double>
-+    </test>
-+    <edit mode="assign" name="hintstyle" >
-+      <const>hintslight</const>
-+    </edit>
-+    <edit mode="assign" name="autohint" >
-+      <bool>true</bool>
-+    </edit>
-+  </match>
-+</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-aquabase-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-aquabase-slight.conf
---- fontconfig-2.8.0.orig/conf.d/21-hinting-small-aquabase-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/21-hinting-small-aquabase-slight.conf	2011-12-04 11:43:08.115961479 +0100
-@@ -0,0 +1,18 @@
-+<?xml version='1.0'?>
-+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-+<fontconfig>
-+  <match target="font" >
-+    <test name="family" qual="any" >
-+      <string>Aquabase</string>
-+    </test>
-+    <test compare="less" name="pixelsize" qual="any" >
-+      <double>13.5</double>
-+    </test>
-+    <edit mode="assign" name="hintstyle" >
-+      <const>hintslight</const>
-+    </edit>
-+    <edit mode="assign" name="autohint" >
-+      <bool>true</bool>
-+    </edit>
-+  </match>
-+</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-arial-black-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-arial-black-slight.conf
---- fontconfig-2.8.0.orig/conf.d/21-hinting-small-arial-black-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/21-hinting-small-arial-black-slight.conf	2011-12-04 11:43:08.115961479 +0100
-@@ -0,0 +1,15 @@
-+<?xml version='1.0'?>
-+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-+<fontconfig>
-+  <match target="font" >
-+    <test compare="less" name="pixelsize" qual="any" >
-+      <double>8.5</double>
-+    </test>
-+    <edit mode="assign" name="hintstyle" >
-+      <const>hintslight</const>
-+    </edit>
-+    <edit mode="assign" name="autohint" >
-+      <bool>true</bool>
-+    </edit>
-+  </match>
-+</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/21-hinting-small-browallia-slight.conf fontconfig-2.8.0/conf.d/21-hinting-small-browallia-slight.conf
---- fontconfig-2.8.0.orig/conf.d/21-hinting-small-browallia-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/21-hinting-small-browallia-slight.conf	2011-12-04 11:43:08.115961479 +0100
-@@ -0,0 +1,19 @@
-+<?xml version='1.0'?>
-+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-+<fontconfig>
-+  <match target="font" >
-+    <test name="family" qual="any" >
-+      <string>Browallia New</string>
-+      <string>BrowalliaUPC</string>
-+    </test>
-+    <test compare="less" name="pixelsize" qual="any" >
-+      <double>13.5</double>
-+    </test>
-+    <edit mode="assign" name="hintstyle" >
-+      <const>hintslight</const>
-+    </edit>
-+    <edit mode="assign" name="autohint" >
-+      <bool>true</bool>
-+    </edit>
-+  </match>
-+</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/22-hinting-courier-italic-slight.conf fontconfig-2.8.0/conf.d/22-hinting-courier-italic-slight.conf
---- fontconfig-2.8.0.orig/conf.d/22-hinting-courier-italic-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/22-hinting-courier-italic-slight.conf	2011-12-04 11:43:08.115961479 +0100
-@@ -0,0 +1,18 @@
-+<?xml version='1.0'?>
-+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-+<fontconfig>
-+  <match target="font" >
-+    <test name="family" qual="any" >
-+      <string>Courier</string>
-+    </test>
-+    <test name="slant" compare="not_eq" >
-+      <const>roman</const>
-+    </test>
-+    <edit mode="assign" name="hintstyle" >
-+      <const>hintslight</const>
-+    </edit>
-+    <edit mode="assign" name="autohint" >
-+      <bool>true</bool>
-+    </edit>
-+  </match>
-+</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-non-tt-instructed-slight.conf fontconfig-2.8.0/conf.d/25-hinting-non-tt-instructed-slight.conf
---- fontconfig-2.8.0.orig/conf.d/25-hinting-non-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/25-hinting-non-tt-instructed-slight.conf	2011-12-04 11:43:08.115961479 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/15-hinting-non-tt-instructed-slight.conf fontconfig-2.9.0/conf.d/15-hinting-non-tt-instructed-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/15-hinting-non-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/15-hinting-non-tt-instructed-slight.conf	2012-05-06 11:49:00.121859679 +0200
 @@ -0,0 +1,170 @@
 +<?xml version='1.0'?>
 +<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
@@ -277,9 +172,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-non-tt-instructed-slight.conf
 +    </edit>
 +  </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-full.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-full.conf
---- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-full.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-full.conf	2011-12-04 11:43:08.115961479 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-full.conf fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-full.conf
+--- fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-full.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-full.conf	2012-05-06 11:49:00.121859679 +0200
 @@ -0,0 +1,111 @@
 +<?xml version='1.0'?>
 +<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
@@ -392,9 +287,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-full.conf fontc
 +    </edit>
 +  </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-none.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-none.conf
---- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-none.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-none.conf	2011-12-04 11:43:08.115961479 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-none.conf fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-none.conf
+--- fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-none.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-none.conf	2012-05-06 11:49:00.121859679 +0200
 @@ -0,0 +1,111 @@
 +<?xml version='1.0'?>
 +<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
@@ -507,9 +402,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-none.conf fontc
 +    </edit>
 +  </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-slight.conf fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-slight.conf
---- fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/25-hinting-tt-instructed-slight.conf	2011-12-04 11:43:08.115961479 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-slight.conf fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/15-hinting-tt-instructed-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/15-hinting-tt-instructed-slight.conf	2012-05-06 11:49:00.122859669 +0200
 @@ -0,0 +1,111 @@
 +<?xml version='1.0'?>
 +<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
@@ -622,9 +517,114 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/25-hinting-tt-instructed-slight.conf fon
 +    </edit>
 +  </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/70-force-bitmaps.conf fontconfig-2.8.0/conf.d/70-force-bitmaps.conf
---- fontconfig-2.8.0.orig/conf.d/70-force-bitmaps.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/70-force-bitmaps.conf	2011-12-04 11:42:48.230144741 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/20-hinting-small-fonts-slight.conf fontconfig-2.9.0/conf.d/20-hinting-small-fonts-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/20-hinting-small-fonts-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/20-hinting-small-fonts-slight.conf	2012-05-06 11:49:00.119859701 +0200
+@@ -0,0 +1,15 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>8.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.9.0.orig/conf.d/21-hinting-small-aquabase-slight.conf fontconfig-2.9.0/conf.d/21-hinting-small-aquabase-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/21-hinting-small-aquabase-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/21-hinting-small-aquabase-slight.conf	2012-05-06 11:49:00.119859701 +0200
+@@ -0,0 +1,18 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Aquabase</string>
++    </test>
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>13.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.9.0.orig/conf.d/21-hinting-small-arial-black-slight.conf fontconfig-2.9.0/conf.d/21-hinting-small-arial-black-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/21-hinting-small-arial-black-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/21-hinting-small-arial-black-slight.conf	2012-05-06 11:49:00.119859701 +0200
+@@ -0,0 +1,15 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>8.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.9.0.orig/conf.d/21-hinting-small-browallia-slight.conf fontconfig-2.9.0/conf.d/21-hinting-small-browallia-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/21-hinting-small-browallia-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/21-hinting-small-browallia-slight.conf	2012-05-06 11:49:00.120859690 +0200
+@@ -0,0 +1,19 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Browallia New</string>
++      <string>BrowalliaUPC</string>
++    </test>
++    <test compare="less" name="pixelsize" qual="any" >
++      <double>13.5</double>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.9.0.orig/conf.d/22-hinting-courier-italic-slight.conf fontconfig-2.9.0/conf.d/22-hinting-courier-italic-slight.conf
+--- fontconfig-2.9.0.orig/conf.d/22-hinting-courier-italic-slight.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/22-hinting-courier-italic-slight.conf	2012-05-06 11:49:00.120859690 +0200
+@@ -0,0 +1,18 @@
++<?xml version='1.0'?>
++<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
++<fontconfig>
++  <match target="font" >
++    <test name="family" qual="any" >
++      <string>Courier</string>
++    </test>
++    <test name="slant" compare="not_eq" >
++      <const>roman</const>
++    </test>
++    <edit mode="assign" name="hintstyle" >
++      <const>hintslight</const>
++    </edit>
++    <edit mode="assign" name="autohint" >
++      <bool>true</bool>
++    </edit>
++  </match>
++</fontconfig>
+diff -Naur fontconfig-2.9.0.orig/conf.d/70-force-bitmaps.conf fontconfig-2.9.0/conf.d/70-force-bitmaps.conf
+--- fontconfig-2.9.0.orig/conf.d/70-force-bitmaps.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/70-force-bitmaps.conf	2012-05-06 11:49:00.122859669 +0200
 @@ -0,0 +1,20 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -646,9 +646,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/70-force-bitmaps.conf fontconfig-2.8.0/c
 +  <edit name="prefer_outline"><bool>false</bool></edit>
 + </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/70-no-bitmaps.conf fontconfig-2.8.0/conf.d/70-no-bitmaps.conf
---- fontconfig-2.8.0.orig/conf.d/70-no-bitmaps.conf	2011-12-04 11:42:39.512226057 +0100
-+++ fontconfig-2.8.0/conf.d/70-no-bitmaps.conf	2011-12-04 11:42:48.230144741 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/70-no-bitmaps.conf fontconfig-2.9.0/conf.d/70-no-bitmaps.conf
+--- fontconfig-2.9.0.orig/conf.d/70-no-bitmaps.conf	2012-05-06 11:48:51.348954544 +0200
++++ fontconfig-2.9.0/conf.d/70-no-bitmaps.conf	2012-05-06 11:49:00.123859659 +0200
 @@ -9,4 +9,12 @@
     </pattern>
    </rejectfont>
@@ -662,9 +662,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/70-no-bitmaps.conf fontconfig-2.8.0/conf
 +  <edit name="prefer_outline"><bool>true</bool></edit>
 + </match>
  </fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/90-embolden.conf fontconfig-2.8.0/conf.d/90-embolden.conf
---- fontconfig-2.8.0.orig/conf.d/90-embolden.conf	1970-01-01 01:00:00.000000000 +0100
-+++ fontconfig-2.8.0/conf.d/90-embolden.conf	2011-12-04 11:42:48.238144666 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/90-embolden.conf fontconfig-2.9.0/conf.d/90-embolden.conf
+--- fontconfig-2.9.0.orig/conf.d/90-embolden.conf	1970-01-01 01:00:00.000000000 +0100
++++ fontconfig-2.9.0/conf.d/90-embolden.conf	2012-05-06 11:49:00.124859649 +0200
 @@ -0,0 +1,22 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -688,9 +688,9 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/90-embolden.conf fontconfig-2.8.0/conf.d
 +  <edit name="weight" mode="assign"><const>bold</const></edit>
 + </match>
 +</fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/90-synthetic.conf fontconfig-2.8.0/conf.d/90-synthetic.conf
---- fontconfig-2.8.0.orig/conf.d/90-synthetic.conf	2011-12-04 11:42:39.513226048 +0100
-+++ fontconfig-2.8.0/conf.d/90-synthetic.conf	2011-12-04 11:42:48.238144666 +0100
+diff -Naur fontconfig-2.9.0.orig/conf.d/90-synthetic.conf fontconfig-2.9.0/conf.d/90-synthetic.conf
+--- fontconfig-2.9.0.orig/conf.d/90-synthetic.conf	2012-05-06 11:48:51.349954533 +0200
++++ fontconfig-2.9.0/conf.d/90-synthetic.conf	2012-05-06 11:49:00.124859649 +0200
 @@ -61,4 +61,55 @@
  			<const>bold</const>
  		</edit>
@@ -747,12 +747,17 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/90-synthetic.conf fontconfig-2.8.0/conf.
 +        </match>
 +
  </fontconfig>
-diff -Naur fontconfig-2.8.0.orig/conf.d/Makefile.am fontconfig-2.8.0/conf.d/Makefile.am
---- fontconfig-2.8.0.orig/conf.d/Makefile.am	2011-12-04 11:42:39.512226057 +0100
-+++ fontconfig-2.8.0/conf.d/Makefile.am	2011-12-04 11:45:16.064388855 +0100
-@@ -39,7 +39,16 @@
- 	10-unhinted.conf \
- 	11-lcd-filter-lcddefault.conf \
+diff -Naur fontconfig-2.9.0.orig/conf.d/Makefile.am fontconfig-2.9.0/conf.d/Makefile.am
+--- fontconfig-2.9.0.orig/conf.d/Makefile.am	2012-05-06 11:48:51.348954544 +0200
++++ fontconfig-2.9.0/conf.d/Makefile.am	2012-05-06 11:56:28.082066237 +0200
+@@ -40,8 +40,17 @@
+ 	11-lcdfilter-default.conf \
+ 	11-lcdfilter-legacy.conf \
+ 	11-lcdfilter-light.conf \
++	15-hinting-non-tt-instructed-slight.conf \
++	15-hinting-tt-instructed-full.conf \
++	15-hinting-tt-instructed-none.conf \
++	15-hinting-tt-instructed-slight.conf \
  	20-fix-globaladvance.conf \
 +	20-hinting-small-fonts-slight.conf \
  	20-unhint-small-vera.conf \
@@ -760,14 +765,10 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/Makefile.am fontconfig-2.8.0/conf.d/Make
 +	21-hinting-small-arial-black-slight.conf \
 +	21-hinting-small-browallia-slight.conf \
 +	22-hinting-courier-italic-slight.conf \
-+	25-hinting-non-tt-instructed-slight.conf \
-+	25-hinting-tt-instructed-full.conf \
-+	25-hinting-tt-instructed-none.conf \
-+	25-hinting-tt-instructed-slight.conf \
  	25-unhint-nonlatin.conf \
  	30-urw-aliases.conf \
  	30-metric-aliases.conf \
-@@ -57,6 +66,7 @@
+@@ -59,13 +68,15 @@
  	70-no-bitmaps.conf \
  	70-yes-bitmaps.conf \
  	80-delicious.conf \
@@ -775,7 +776,16 @@ diff -Naur fontconfig-2.8.0.orig/conf.d/Makefile.am fontconfig-2.8.0/conf.d/Make
  	90-synthetic.conf
  
  CONF_LINKS = \
-@@ -80,6 +90,7 @@
+ 	10-antialias.conf \
++	10-autohint.conf \
+ 	10-hinting.conf \
+ 	10-hinting-slight.conf \
+-	11-lcd-filter-lcddefault.conf \
++	11-lcdfilter-default.conf \
+ 	20-fix-globaladvance.conf \
+ 	20-unhint-small-vera.conf \
+ 	30-urw-aliases.conf \
+@@ -82,6 +93,7 @@
  	69-unifont.conf \
  	70-no-bitmaps.conf \
  	80-delicious.conf \

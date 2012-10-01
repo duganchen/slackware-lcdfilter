@@ -6,18 +6,16 @@ to Slackware.
 By default, they build for "lcdfilter" rendering. Build them with USE=cleartype
 if you want to "cleartype" rendering instead.
 
-The current revision is for Slackware 13.37. Here are direct links to the
+The current revision is for Slackware 14.0. Here are direct links to the
 source tarballs. Use the slackware-lcdfilter SlackBuilds to build and install
 them in the following order:
 
 1. [FreeType
    2.4.10](http://download.savannah.gnu.org/releases/freetype/freetype-2.4.10.tar.bz2)
-2. [Fontconfig 2.8.0](http://fontconfig.org/release/fontconfig-2.8.0.tar.gz)
-3. [libXft
-   2.2.0](http://xorg.freedesktop.org/releases/individual/lib/libXft-2.2.0.tar.bz2)
-4. [Cairo 1.10.2](http://cairographics.org/releases/cairo-1.10.2.tar.gz)
+2. [Fontconfig 2.9.0](http://fontconfig.org/release/fontconfig-2.9.0.tar.gz)
+3. [Cairo 1.10.2](http://cairographics.org/releases/cairo-1.10.2.tar.gz)
 
-These are the same versions included in an up-to-date Slackware 13.37
+These are the same versions included in an up-to-date Slackware 14.0
 installation.
 
 Source /etc/profile.d/infinality-settings.sh before restarting X. It will also

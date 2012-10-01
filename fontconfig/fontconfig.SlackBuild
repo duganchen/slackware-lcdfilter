@@ -86,7 +86,6 @@ patch -p1 --verbose --backup --suffix=.orig < $CWD/fontconfig.font.dir.list.diff
 
 patch -p1 --verbose < $FILESDIR/$PN-2.7.1-latin-reorder.patch 
 patch -p0 --verbose < $FILESDIR/$PN-2.3.2-docbook.patch
-patch -p1 --verbose < $FILESDIR/$PN-2.8.0-urw-aliases.patch
 
 patch -p1 --verbose < $FILESDIR/$P-ubuntu.patch
 patch -p1 --verbose < $FILESDIR/$P-infinality.patch
