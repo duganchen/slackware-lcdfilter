@@ -3,9 +3,6 @@
 Ports of Gentoo's [LCD filtering](http://gitorious.org/lcd-filtering) ebuilds
 to Slackware.
 
-By default, they build for "lcdfilter" rendering. Build them with USE=cleartype
-if you want to "cleartype" rendering instead.
-
 The current revision is for Slackware 14.0. Here are direct links to the
 source tarballs. Use the slackware-lcdfilter SlackBuilds to build and install
 them in the following order:
